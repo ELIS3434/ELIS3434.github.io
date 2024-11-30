@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
+    <title>Hogwarts School of Witchcraft and Wizardry</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8388855305126958"
      crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #4f46e5;
-            --secondary-color: #3730a3;
-            --accent-color: #f59e0b;
-            --text-color: #1f2937;
-            --bg-color: #f8fafc;
+            --primary-color: #740001;
+            --secondary-color: #d3a625;
+            --accent-color: #1a472a;
+            --text-color: #2a2a2a;
+            --bg-color: #f5f5f5;
             --card-bg: #ffffff;
+            --gryffindor: #740001;
+            --slytherin: #1a472a;
+            --ravenclaw: #0e1a40;
+            --hufflepuff: #ecb939;
         }
 
         * {
@@ -26,10 +30,15 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Cinzel', serif;
         }
 
         .container {
@@ -39,19 +48,19 @@
         }
 
         header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(20, 20, 20, 0.95);
             backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 2px solid var(--secondary-color);
         }
 
         header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background-color: rgba(20, 20, 20, 0.98);
         }
 
         nav {
@@ -63,8 +72,8 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
+            font-weight: 800;
+            color: var(--secondary-color);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -79,10 +88,11 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--secondary-color);
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
+            font-family: 'Cinzel', serif;
         }
 
         .nav-links a::after {
@@ -92,7 +102,7 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color);
             transition: width 0.3s ease;
         }
 
@@ -101,25 +111,28 @@
         }
 
         .hero {
-            padding: 10rem 0 6rem;
+            padding: 12rem 0 6rem;
             text-align: center;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1583997052103-b4a1cb974ce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--secondary-color);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 1s ease;
         }
 
         .hero p {
             font-size: 1.25rem;
             margin-bottom: 2.5rem;
-            color: #4b5563;
-            max-width: 600px;
+            color: #ffffff;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             animation: fadeInUp 1s ease 0.2s backwards;
@@ -128,22 +141,22 @@
         .btn {
             display: inline-block;
             padding: 1rem 2rem;
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
+            border-radius: 4px;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            font-family: 'Cinzel', serif;
         }
 
         .btn:hover {
-            background-color: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
 
-        .features {
+        .houses {
             padding: 6rem 0;
             background-color: var(--card-bg);
         }
@@ -159,66 +172,79 @@
             margin-bottom: 1rem;
         }
 
-        .features-grid {
+        .houses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             padding: 2rem 0;
         }
 
-        .feature-card {
+        .house-card {
             padding: 2.5rem;
-            background-color: var(--card-bg);
             border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            color: white;
+            text-align: center;
         }
 
-        .feature-card::before {
+        .house-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(245, 158, 11, 0.1));
-            opacity: 0;
+            opacity: 0.9;
+            z-index: -1;
             transition: opacity 0.3s ease;
         }
 
-        .feature-card:hover {
+        .gryffindor {
+            background-color: var(--gryffindor);
+        }
+
+        .slytherin {
+            background-color: var(--slytherin);
+        }
+
+        .ravenclaw {
+            background-color: var(--ravenclaw);
+        }
+
+        .hufflepuff {
+            background-color: var(--hufflepuff);
+            color: var(--text-color);
+        }
+
+        .house-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card i {
-            font-size: 2rem;
-            color: var(--primary-color);
+        .house-card i {
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
 
-        .feature-card h3 {
-            font-size: 1.5rem;
+        .house-card h3 {
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            font-family: 'Cinzel', serif;
         }
 
         .ad-container {
             margin: 2rem auto;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             max-width: 100%;
             overflow: hidden;
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            border: 1px solid var(--secondary-color);
         }
 
         .ad-container:hover {
@@ -237,6 +263,153 @@
             }
         }
 
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        .courses {
+            padding: 6rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                        url('https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--secondary-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(211, 166, 37, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover::before {
+            transform: rotate(90deg);
+        }
+
+        .course-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .magical-border {
+            position: relative;
+        }
+
+        .magical-border::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--secondary-color);
+            border-radius: inherit;
+            animation: borderGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .staff {
+            padding: 6rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .staff-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .staff-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--secondary-color);
+            overflow: hidden;
+        }
+
+        .staff-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -251,26 +424,17 @@
                 padding: 0 1rem;
             }
 
-            .features-grid {
+            .houses-grid {
                 grid-template-columns: 1fr;
                 padding: 1rem;
             }
         }
 
-        /* Dark mode support */
         @media (prefers-color-scheme: dark) {
             :root {
                 --text-color: #f3f4f6;
-                --bg-color: #1f2937;
-                --card-bg: #2d3748;
-            }
-
-            header {
-                background-color: rgba(45, 55, 72, 0.95);
-            }
-
-            header.scrolled {
-                background-color: rgba(45, 55, 72, 0.98);
+                --bg-color: #1a1a1a;
+                --card-bg: #2d2d2d;
             }
         }
     </style>
@@ -279,12 +443,13 @@
     <header>
         <nav class="container">
             <a href="#" class="logo">
-                <i class="fas fa-code"></i>
-                Portfolio
+                <i class="fas fa-hat-wizard"></i>
+                Hogwarts
             </a>
             <div class="nav-links">
                 <a href="#home">Home</a>
-                <a href="#features">Projects</a>
+                <a href="#houses">Houses</a>
+                <a href="#courses">Courses</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -293,9 +458,9 @@
 
     <section class="hero" id="home">
         <div class="container">
-            <h1>Welcome to My Portfolio</h1>
-            <p>I create beautiful and functional websites using modern web technologies. Let's build something amazing together!</p>
-            <a href="#features" class="btn">View My Work</a>
+            <h1>Welcome to Hogwarts</h1>
+            <p>Where Magic Meets Education. Discover the ancient art of witchcraft and wizardry at the world's most prestigious school of magic.</p>
+            <a href="#houses" class="btn">Explore Houses</a>
         </div>
     </section>
 
@@ -312,27 +477,32 @@
         </script>
     </div>
 
-    <section class="features" id="features">
+    <section class="houses" id="houses">
         <div class="container">
             <div class="section-title">
-                <h2>Featured Projects</h2>
-                <p>Here are some of my recent works</p>
+                <h2>The Four Houses</h2>
+                <p>Each with its own noble history, each with its own outstanding qualities</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Responsive Design</h3>
-                    <p>Creating websites that look great on all devices, from mobile to desktop.</p>
+            <div class="houses-grid">
+                <div class="house-card gryffindor">
+                    <i class="fas fa-dragon"></i>
+                    <h3>Gryffindor</h3>
+                    <p>Where dwell the brave at heart. Their daring, nerve, and chivalry set Gryffindors apart.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>Modern UI/UX</h3>
-                    <p>Designing beautiful and intuitive user interfaces with great user experience.</p>
+                <div class="house-card slytherin">
+                    <i class="fas fa-snake"></i>
+                    <h3>Slytherin</h3>
+                    <p>Those cunning folk use any means to achieve their ends.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Clean Code</h3>
-                    <p>Writing maintainable and efficient code following best practices.</p>
+                <div class="house-card ravenclaw">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Ravenclaw</h3>
+                    <p>Wit beyond measure is man's greatest treasure.</p>
+                </div>
+                <div class="house-card hufflepuff">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Hufflepuff</h3>
+                    <p>Where they are just and loyal, those patient Hufflepuffs are true.</p>
                 </div>
             </div>
         </div>
@@ -350,6 +520,71 @@
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </div>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Magical Courses</h2>
+                <p>Master the ancient arts of magic through our comprehensive curriculum</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card magical-border">
+                    <i class="fas fa-wand-sparkles floating"></i>
+                    <h3>Charms</h3>
+                    <p>Learn to cast spells that add properties to objects and creatures.</p>
+                </div>
+                <div class="course-card magical-border">
+                    <i class="fas fa-hat-wizard floating"></i>
+                    <h3>Transfiguration</h3>
+                    <p>Master the art of changing the form and appearance of objects.</p>
+                </div>
+                <div class="course-card magical-border">
+                    <i class="fas fa-flask floating"></i>
+                    <h3>Potions</h3>
+                    <p>Brew magical concoctions with precise measurements and timing.</p>
+                </div>
+                <div class="course-card magical-border">
+                    <i class="fas fa-broom floating"></i>
+                    <h3>Flying</h3>
+                    <p>Learn to navigate the skies on your magical broomstick.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section class="staff" id="staff">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Distinguished Staff</h2>
+                <p>Meet the wizards and witches who will guide your magical journey</p>
+            </div>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=300&h=300" alt="Professor">
+                    </div>
+                    <h3>Professor McGonagall</h3>
+                    <p>Transfiguration Master</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-img">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?fit=crop&w=300&h=300" alt="Professor">
+                    </div>
+                    <h3>Professor Flitwick</h3>
+                    <p>Charms Expert</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-img">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?fit=crop&w=300&h=300" alt="Professor">
+                    </div>
+                    <h3>Madam Hooch</h3>
+                    <p>Flying Instructor</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
         // Header scroll effect
@@ -372,7 +607,7 @@
             });
         });
 
-        // Animate feature cards on scroll
+        // Animate house cards on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -384,7 +619,39 @@
             threshold: 0.1
         });
 
-        document.querySelectorAll('.feature-card').forEach((card) => {
+        document.querySelectorAll('.house-card').forEach((card) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(card);
+        });
+
+        // Create magical sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1500);
+        }
+
+        // Add sparkles periodically
+        setInterval(createSparkle, 300);
+
+        // Animate course cards on scroll
+        document.querySelectorAll('.course-card').forEach((card) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(card);
+        });
+
+        // Animate staff cards on scroll
+        document.querySelectorAll('.staff-card').forEach((card) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
