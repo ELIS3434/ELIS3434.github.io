@@ -17,21 +17,9 @@
             max-width: 100%;
             height: auto;
         }
-        .click-container {
-            width: 100%;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
-    <!-- Clickable overlay -->
-    <div id="clickOverlay" class="click-container"></div>
-
     <h1></h1>
 
     <!-- Image Section -->
@@ -147,11 +135,5 @@
                  (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
-    <script>
-        document.getElementById('clickOverlay').addEventListener('click', function() {
-            // You can replace this URL with any monetization site URL
-            window.open('about:blank', '_blank');
-        });
-    </script>
 </body>
 </html>
