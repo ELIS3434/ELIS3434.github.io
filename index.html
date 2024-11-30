@@ -1,1 +1,157 @@
-off
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .ad-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .click-container {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Clickable overlay -->
+    <div id="clickOverlay" class="click-container"></div>
+
+    <h1></h1>
+
+    <!-- Image Section -->
+    <div class="image-container">
+        <img src="cement.gif" alt="Cement" />
+    </div>
+
+    <!-- Example 1: In-article Ad -->
+    <div class="ad-container">
+        <h2>In-article Ad (Acti1)</h2>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8388855305126958"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-8388855305126958"
+             data-ad-slot="7124228464"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Example 2: Auto-relaxed Ad -->
+    <div class="ad-container">
+        <h2>Auto-relaxed Ad (Acti 2)</h2>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8388855305126958"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="autorelaxed"
+             data-ad-client="ca-pub-8388855305126958"
+             data-ad-slot="3987763384"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Example 3: Fluid Ad -->
+    <div class="ad-container">
+        <h2>Fluid Ad (Active 04)</h2>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8388855305126958"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-8388855305126958"
+             data-ad-slot="2408815057"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+        <!-- Active 3 -->
+        <div class="ad-container">
+            <h2>Active 3</h2>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8388855305126958"
+                 crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-8388855305126958"
+                 data-ad-slot="2479240597"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    
+        <!-- Acti 2 1/2 -->
+        <div class="ad-container">
+            <h2>Acti 2 1/2</h2>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8388855305126958"
+                 crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="autorelaxed"
+                 data-ad-client="ca-pub-8388855305126958"
+                 data-ad-slot="5811146791"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    
+        <!-- Active 05 -->
+        <div class="ad-container">
+            <h2>Active 05</h2>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8388855305126958"
+                 crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8388855305126958"
+                 data-ad-slot="3987865014"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    
+        <!-- Active 06 -->
+        <div class="ad-container">
+            <h2>Active 06</h2>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8388855305126958"
+                 crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8388855305126958"
+                 data-ad-slot="3301367677"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    <script>
+        document.getElementById('clickOverlay').addEventListener('click', function() {
+            // You can replace this URL with any monetization site URL
+            window.open('about:blank', '_blank');
+        });
+    </script>
+</body>
+</html>
