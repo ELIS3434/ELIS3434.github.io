@@ -328,7 +328,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(211, 166, 37, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(211, 166, 55, 0.1) 0%, transparent 70%);
             transform: rotate(45deg);
             transition: all 0.3s ease;
         }
@@ -437,9 +437,318 @@
                 --card-bg: #2d2d2d;
             }
         }
+
+        /* Magical Quiz Section Styles */
+        .quiz-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c1810 100%);
+            padding: 6rem 0;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--secondary-color);
+            position: relative;
+        }
+
+        .quiz-question {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            text-align: center;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .quiz-option.selected {
+            background: var(--secondary-color);
+            color: #000;
+        }
+
+        /* Spellbook Styles */
+        .spellbook {
+            padding: 6rem 0;
+            background: var(--bg-color);
+        }
+
+        .spellbook-container {
+            perspective: 1000px;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        .spell-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .spell-card:hover {
+            transform: rotateY(10deg) translateZ(20px);
+        }
+
+        .spell-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .spell-details {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .spell-card:hover .spell-details {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Magical Cursor Effect */
+        .cursor-trail {
+            width: 10px;
+            height: 10px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            mix-blend-mode: screen;
+        }
+
+        /* Interactive Map Styles */
+        .magical-map {
+            padding: 4rem 0;
+            background: var(--bg-color);
+            position: relative;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1625593733372-79d8f381d8be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8Y2FzdGxlfHx8fHx8MTYzNjI5NjQ0Mg&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080') center/cover;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .map-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .map-point::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: inherit;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Magical Particles */
+        .particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Floating Candles */
+        .floating-candles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .candle {
+            position: absolute;
+            width: 4px;
+            height: 15px;
+            background: #ffd700;
+            border-radius: 2px;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        .candle::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b00;
+            border-radius: 50%;
+            top: -4px;
+            animation: flicker 1s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.9); }
+        }
+
+        /* Magic Wand Cursor */
+        .wand-cursor {
+            width: 24px;
+            height: 24px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        /* Spell Effects */
+        .spell-effect {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .spell-circle {
+            position: absolute;
+            border: 2px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spellCircle 1s ease-out forwards;
+        }
+
+        @keyframes spellCircle {
+            0% { width: 0; height: 0; opacity: 1; }
+            100% { width: 200px; height: 200px; opacity: 0; transform: translate(-50%, -50%); }
+        }
+
+        /* Moving Clouds */
+        .clouds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        /* Magical Scroll */
+        .magical-scroll {
+            max-height: 400px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary-color) transparent;
+        }
+
+        .magical-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .magical-scroll::-webkit-scrollbar-thumb {
+            background-color: var(--secondary-color);
+            border-radius: 3px;
+        }
+
+        /* Enchanted Elements */
+        .enchanted {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enchanted::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 100%
+            );
+            animation: enchantedShine 3s infinite linear;
+        }
+
+        @keyframes enchantedShine {
+            0% { transform: rotate(0) translate(-50%, -50%); }
+            100% { transform: rotate(360deg) translate(-50%, -50%); }
+        }
     </style>
 </head>
 <body>
+    <!-- Particles Container -->
+    <div id="particles-js"></div>
+
+    <!-- Floating Candles Container -->
+    <div class="floating-candles"></div>
+
+    <!-- Magic Wand Cursor -->
+    <div class="wand-cursor">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZDcwMCIgZD0iTTIwLjM4IDMuNjJMMTcuNSA2LjVsLTEuMTItMS4xMkwxOS4yNiAyLjVsMS4xMiAxLjEyek0xNiA2LjVsLTEuMTItMS4xMkwxNy43NiAyLjVsMi42MiAyLjYyTDE2IDYuNXoiLz48L3N2Zz4=" alt="Magic Wand">
+    </div>
+
     <header>
         <nav class="container">
             <a href="#" class="logo">
@@ -586,7 +895,202 @@
         </div>
     </section>
 
+    <!-- Magical Quiz Section -->
+    <section class="quiz-section" id="quiz">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sorting Hat Quiz</h2>
+                <p>Discover your Hogwarts house through our magical quiz</p>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>Which quality do you value most?</h3>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-house="gryffindor">
+                        <p>Courage</p>
+                    </div>
+                    <div class="quiz-option" data-house="ravenclaw">
+                        <p>Wisdom</p>
+                    </div>
+                    <div class="quiz-option" data-house="hufflepuff">
+                        <p>Loyalty</p>
+                    </div>
+                    <div class="quiz-option" data-house="slytherin">
+                        <p>Ambition</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spellbook Section -->
+    <section class="spellbook" id="spellbook">
+        <div class="container">
+            <div class="section-title">
+                <h2>Magical Spellbook</h2>
+                <p>Explore the ancient spells of the wizarding world</p>
+            </div>
+            <div class="spellbook-container">
+                <div class="spell-card">
+                    <div class="spell-icon">
+                        <i class="fas fa-magic floating"></i>
+                    </div>
+                    <h3>Lumos</h3>
+                    <div class="spell-details">
+                        <p>The Wand-lighting Charm</p>
+                        <p>Illuminates the tip of the caster's wand</p>
+                    </div>
+                </div>
+                <div class="spell-card">
+                    <div class="spell-icon">
+                        <i class="fas fa-feather floating"></i>
+                    </div>
+                    <h3>Wingardium Leviosa</h3>
+                    <div class="spell-details">
+                        <p>The Levitation Charm</p>
+                        <p>Makes objects fly or levitate</p>
+                    </div>
+                </div>
+                <div class="spell-card">
+                    <div class="spell-icon">
+                        <i class="fas fa-shield-alt floating"></i>
+                    </div>
+                    <h3>Expecto Patronum</h3>
+                    <div class="spell-details">
+                        <p>The Patronus Charm</p>
+                        <p>Conjures a spirit guardian</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map -->
+    <section class="magical-map" id="map">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hogwarts Grounds</h2>
+                <p>Explore the magical castle and its surroundings</p>
+            </div>
+            <div class="map-container">
+                <!-- Map points will be added dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffd700' },
+                shape: { type: 'circle' },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    animation: { enable: true, speed: 1, minimumValue: 0.1, sync: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    animation: { enable: true, speed: 2, minimumValue: 0.1, sync: false }
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    outModes: { default: 'out' }
+                }
+            },
+            interactivity: {
+                detectsOn: 'canvas',
+                events: {
+                    onHover: { enable: true, mode: 'repulse' },
+                    onClick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Create Floating Candles
+        function createCandles() {
+            const candlesContainer = document.querySelector('.floating-candles');
+            const numberOfCandles = 20;
+
+            for (let i = 0; i < numberOfCandles; i++) {
+                const candle = document.createElement('div');
+                candle.className = 'candle';
+                candle.style.left = `${Math.random() * 100}%`;
+                candle.style.top = `${Math.random() * 100}%`;
+                candle.style.animation = `float ${5 + Math.random() * 5}s ease-in-out infinite`;
+                candlesContainer.appendChild(candle);
+            }
+        }
+        createCandles();
+
+        // Magic Wand Cursor
+        const wandCursor = document.querySelector('.wand-cursor');
+        document.addEventListener('mousemove', (e) => {
+            wandCursor.style.left = e.pageX + 'px';
+            wandCursor.style.top = e.pageY + 'px';
+            
+            // Rotate wand based on movement
+            const moveX = e.movementX;
+            const moveY = e.movementY;
+            const rotation = Math.atan2(moveY, moveX) * (180 / Math.PI);
+            wandCursor.style.transform = `rotate(${rotation}deg)`;
+        });
+
+        // Create Spell Effect on Click
+        document.addEventListener('click', (e) => {
+            const spellEffect = document.createElement('div');
+            spellEffect.className = 'spell-effect';
+            spellEffect.style.left = e.pageX + 'px';
+            spellEffect.style.top = e.pageY + 'px';
+
+            const circle = document.createElement('div');
+            circle.className = 'spell-circle';
+            spellEffect.appendChild(circle);
+            document.body.appendChild(spellEffect);
+
+            setTimeout(() => spellEffect.remove(), 1000);
+        });
+
+        // Create Moving Clouds
+        function createClouds() {
+            const cloudsContainer = document.querySelector('.clouds');
+            const numberOfClouds = 5;
+
+            for (let i = 0; i < numberOfClouds; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                cloud.style.width = `${100 + Math.random() * 200}px`;
+                cloud.style.height = `${50 + Math.random() * 100}px`;
+                cloud.style.left = `${Math.random() * 100}%`;
+                cloud.style.top = `${Math.random() * 100}%`;
+                cloud.style.animation = `float ${20 + Math.random() * 10}s linear infinite`;
+                cloudsContainer.appendChild(cloud);
+            }
+        }
+        createClouds();
+
+        // Enchanted Elements Animation
+        document.querySelectorAll('.enchanted').forEach(element => {
+            element.addEventListener('mouseover', () => {
+                element.style.transform = 'scale(1.05)';
+                createSparkle();
+            });
+
+            element.addEventListener('mouseout', () => {
+                element.style.transform = 'scale(1)';
+            });
+        });
+
         // Header scroll effect
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
@@ -656,6 +1160,84 @@
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
             observer.observe(card);
+        });
+
+        // Sorting Hat Quiz Interaction
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        quizOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                quizOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                
+                // Add magical sparkle effect on selection
+                for(let i = 0; i < 5; i++) {
+                    createSparkle();
+                }
+            });
+        });
+
+        // Magical Cursor Effect
+        function createCursorTrail(e) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = e.pageX + 'px';
+            trail.style.top = e.pageY + 'px';
+            document.body.appendChild(trail);
+
+            trail.style.opacity = '1';
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                setTimeout(() => {
+                    trail.remove();
+                }, 300);
+            }, 50);
+        }
+
+        document.addEventListener('mousemove', createCursorTrail);
+
+        // Interactive Map
+        const mapPoints = [
+            { x: 30, y: 40, name: 'Great Hall', description: 'The heart of Hogwarts, where students dine and gather' },
+            { x: 70, y: 20, name: 'Astronomy Tower', description: 'The highest tower of Hogwarts Castle' },
+            { x: 50, y: 60, name: 'Forbidden Forest', description: 'A mysterious and dangerous forest on the grounds' }
+        ];
+
+        const mapContainer = document.querySelector('.map-container');
+
+        mapPoints.forEach(point => {
+            const mapPoint = document.createElement('div');
+            mapPoint.className = 'map-point';
+            mapPoint.style.left = `${point.x}%`;
+            mapPoint.style.top = `${point.y}%`;
+
+            const tooltip = document.createElement('div');
+            tooltip.className = 'map-tooltip';
+            tooltip.innerHTML = `<h4>${point.name}</h4><p>${point.description}</p>`;
+
+            mapPoint.appendChild(tooltip);
+            mapContainer.appendChild(mapPoint);
+
+            mapPoint.addEventListener('mouseenter', () => {
+                tooltip.style.opacity = '1';
+            });
+
+            mapPoint.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = '0';
+            });
+        });
+
+        // Enhanced scroll animations
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    createSparkle();
+                }
+            });
+        });
+
+        document.querySelectorAll('.spell-card, .map-point').forEach(element => {
+            animateOnScroll.observe(element);
         });
     </script>
 </body>
