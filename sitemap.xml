@@ -8,54 +8,54 @@
 
     <!-- Homepage -->
     <url>
-        <loc>https://yourdomain.com/</loc>
+        <loc>https://petfinder24.live/</loc>
         <lastmod>2025-06-15</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/?lang=en"/>
-        <xhtml:link rel="alternate" hreflang="pl" href="https://yourdomain.com/?lang=pl"/>
-        <xhtml:link rel="alternate" hreflang="es" href="https://yourdomain.com/?lang=es"/>
-        <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/?lang=de"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://yourdomain.com/?lang=fr"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://petfinder24.live/?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="pl" href="https://petfinder24.live/?lang=pl"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://petfinder24.live/?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://petfinder24.live/?lang=de"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://petfinder24.live/?lang=fr"/>
     </url>
 
     <!-- Announcements Page -->
     <url>
-        <loc>https://yourdomain.com/announcements.html</loc>
+        <loc>https://petfinder24.live/announcements.html</loc>
         <lastmod>2025-06-15</lastmod>
         <changefreq>hourly</changefreq>
         <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/announcements.html?lang=en"/>
-        <xhtml:link rel="alternate" hreflang="pl" href="https://yourdomain.com/announcements.html?lang=pl"/>
-        <xhtml:link rel="alternate" hreflang="es" href="https://yourdomain.com/announcements.html?lang=es"/>
-        <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/announcements.html?lang=de"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://yourdomain.com/announcements.html?lang=fr"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://petfinder24.live/announcements.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="pl" href="https://petfinder24.live/announcements.html?lang=pl"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://petfinder24.live/announcements.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://petfinder24.live/announcements.html?lang=de"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://petfinder24.live/announcements.html?lang=fr"/>
     </url>
 
     <!-- Add Post Page -->
     <url>
-        <loc>https://yourdomain.com/add.html</loc>
+        <loc>https://petfinder24.live/add.html</loc>
         <lastmod>2025-06-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/add.html?lang=en"/>
-        <xhtml:link rel="alternate" hreflang="pl" href="https://yourdomain.com/add.html?lang=pl"/>
-        <xhtml:link rel="alternate" hreflang="es" href="https://yourdomain.com/add.html?lang=es"/>
-        <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/add.html?lang=de"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://yourdomain.com/add.html?lang=fr"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://petfinder24.live/add.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="pl" href="https://petfinder24.live/add.html?lang=pl"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://petfinder24.live/add.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://petfinder24.live/add.html?lang=de"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://petfinder24.live/add.html?lang=fr"/>
     </url>
 
     <!-- Contact Page -->
     <url>
-        <loc>https://yourdomain.com/contact.html</loc>
+        <loc>https://petfinder24.live/contact.html</loc>
         <lastmod>2025-06-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://yourdomain.com/contact.html?lang=en"/>
-        <xhtml:link rel="alternate" hreflang="pl" href="https://yourdomain.com/contact.html?lang=pl"/>
-        <xhtml:link rel="alternate" hreflang="es" href="https://yourdomain.com/contact.html?lang=es"/>
-        <xhtml:link rel="alternate" hreflang="de" href="https://yourdomain.com/contact.html?lang=de"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="https://yourdomain.com/contact.html?lang=fr"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://petfinder24.live/contact.html?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="pl" href="https://petfinder24.live/contact.html?lang=pl"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://petfinder24.live/contact.html?lang=es"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://petfinder24.live/contact.html?lang=de"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://petfinder24.live/contact.html?lang=fr"/>
     </url>
 
 </urlset>

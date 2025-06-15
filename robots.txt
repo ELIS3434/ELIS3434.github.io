@@ -2,7 +2,8 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://petfinder24.live/sitemap.xml
+Host: petfinder24.live
 
 # Disallow sensitive areas
 Disallow: /admin/
