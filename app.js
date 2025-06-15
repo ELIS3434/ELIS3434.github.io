@@ -1059,21 +1059,25 @@ document.addEventListener('DOMContentLoaded', function () {
             container.innerHTML = '<div class="col-12 text-center text-muted">No posts yet.</div>';
             return;
         }
-        posts.slice(0, 6).forEach(post => {
+        posts.slice(0, 6).forEach((post, idx) => {
             const col = document.createElement('div');
-            col.className = 'col-12';
+            col.className = 'col-12 fade-in';
             col.innerHTML = `
                 <div class="social-card">
                     <img src="${post.image}" class="avatar" alt="Pet photo">
                     <div class="card-content">
-                        <div class="pet-name">${post.name}</div>
+                        <div class="pet-name">${getPetTypeIcon(post.type)}${post.name}</div>
                         <div class="badges">
                             <span class="badge bg-${post.status === 'lost' ? 'danger' : 'success'}">${post.status.charAt(0).toUpperCase() + post.status.slice(1)}</span>
                             <span class="badge bg-secondary">${post.type}</span>
                         </div>
-                        <div class="pet-location"><i class="bi bi-geo-alt"></i> ${post.location}</div>
+                        <div class="pet-location"><i class="bi bi-geo-alt"></i> ${post.location}
+                            <button class="action-btn" title="Copy location" onclick="navigator.clipboard.writeText('${post.location}')"><i class="bi bi-clipboard"></i></button>
+                            <button class="action-btn" title="Show on map" onclick="window.showOnMap('${post.location}')"><i class="bi bi-map"></i></button>
+                        </div>
                         <div class="pet-date">${new Date(post.date).toLocaleDateString()}</div>
                         <div class="pet-desc">${post.desc}</div>
+                        <button class="action-btn text-danger" title="Delete post" onclick="window.deletePost(${idx})"><i class="bi bi-trash"></i></button>
                     </div>
                 </div>
             `;
@@ -1158,4 +1162,186 @@ document.addEventListener('DOMContentLoaded', function () {
     window.setLang = function(lang) {
         alert('Language switching is a demo. Implement translations as needed.');
     };
+
+    // Dark mode toggle
+    document.getElementById('darkModeToggle').onclick = function() {
+        document.body.classList.toggle('dark-mode');
+        document.documentElement.classList.toggle('dark-mode');
+        this.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="bi bi-brightness-high"></i>' : '<i class="bi bi-moon"></i>';
+    };
+});
+
+function getPetTypeIcon(type) {
+    switch(type) {
+        case 'dog': return '<i class="bi bi-shield-shaded pet-type-icon" title="Dog"></i>';
+        case 'cat': return '<i class="bi bi-emoji-smile pet-type-icon" title="Cat"></i>';
+        case 'bird': return '<i class="bi bi-twitter pet-type-icon" title="Bird"></i>';
+        default: return '<i class="bi bi-question-circle pet-type-icon" title="Other"></i>';
+    }
+}
+
+window.deletePost = function(idx) {
+    const posts = JSON.parse(localStorage.getItem('pf24_posts') || '[]');
+    posts.splice(idx, 1);
+    localStorage.setItem('pf24_posts', JSON.stringify(posts));
+    renderPosts();
+};
+
+window.showOnMap = function(location) {
+    const [lat, lng] = location.split(',').map(Number);
+    if (!isNaN(lat) && !isNaN(lng)) {
+        map.setView([lat, lng], 15);
+        if (marker) map.removeLayer(marker);
+        marker = L.marker([lat, lng]).addTo(map);
+    }
+};
+
+// --- Firebase Config ---
+// TODO: Replace with your actual Firebase config
+const firebaseConfig = {
+  apiKey: "<YOUR_API_KEY>",
+  authDomain: "<YOUR_AUTH_DOMAIN>",
+  projectId: "petfinder24-947d4",
+  storageBucket: "<YOUR_STORAGE_BUCKET>",
+  messagingSenderId: "<YOUR_MESSAGING_SENDER_ID>",
+  appId: "<YOUR_APP_ID>",
+  measurementId: "<YOUR_MEASUREMENT_ID>"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// --- Google Maps Integration ---
+let map, marker;
+window.initMap = function() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 52.2297, lng: 21.0122 },
+        zoom: 6,
+        disableDefaultUI: false
+    });
+    map.addListener('click', function(e) {
+        setMarker(e.latLng.lat(), e.latLng.lng());
+        document.getElementById('petLocation').value = `${e.latLng.lat().toFixed(5)}, ${e.latLng.lng().toFixed(5)}`;
+    });
+};
+function setMarker(lat, lng) {
+    if (marker) marker.setMap(null);
+    marker = new google.maps.Marker({ position: { lat, lng }, map });
+}
+document.getElementById('useLocation').onclick = function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+            map.setCenter({ lat, lng });
+            map.setZoom(13);
+            setMarker(lat, lng);
+            document.getElementById('petLocation').value = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+        }, function(err) {
+            alert('Could not get your location.');
+        });
+    } else {
+        alert('Geolocation is not supported by your browser.');
+    }
+};
+
+// --- Firestore Posts Logic ---
+async function fetchPosts() {
+    const snapshot = await db.collection('posts').orderBy('date', 'desc').limit(6).get();
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+}
+async function addPost(post) {
+    await db.collection('posts').add(post);
+}
+async function deletePostFirestore(id) {
+    await db.collection('posts').doc(id).delete();
+}
+
+// --- UI Logic ---
+async function renderPosts() {
+    const posts = await fetchPosts();
+    const container = document.getElementById('recentPosts');
+    container.innerHTML = '';
+    if (!posts.length) {
+        container.innerHTML = '<div class="col-12 text-center text-muted">No posts yet.</div>';
+        return;
+    }
+    posts.forEach(post => {
+        const col = document.createElement('div');
+        col.className = 'col-12 fade-in';
+        col.innerHTML = `
+            <div class="social-card">
+                <img src="${post.image}" class="avatar" alt="Pet photo">
+                <div class="card-content">
+                    <div class="pet-name">${getPetTypeIcon(post.type)}${post.name}</div>
+                    <div class="badges">
+                        <span class="badge bg-${post.status === 'lost' ? 'danger' : 'success'}">${post.status.charAt(0).toUpperCase() + post.status.slice(1)}</span>
+                        <span class="badge bg-secondary">${post.type}</span>
+                    </div>
+                    <div class="pet-location"><i class="bi bi-geo-alt"></i> ${post.location}
+                        <button class="action-btn" title="Copy location" onclick="navigator.clipboard.writeText('${post.location}')"><i class="bi bi-clipboard"></i></button>
+                        <button class="action-btn" title="Show on map" onclick="window.showOnMap('${post.location}')"><i class="bi bi-map"></i></button>
+                    </div>
+                    <div class="pet-date">${new Date(post.date).toLocaleDateString()}</div>
+                    <div class="pet-desc">${post.desc}</div>
+                    <button class="action-btn text-danger" title="Delete post" onclick="window.deletePostFirestore('${post.id}').then(renderPosts)"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+        `;
+        container.appendChild(col);
+    });
+}
+window.deletePostFirestore = deletePostFirestore;
+window.showOnMap = function(location) {
+    const [lat, lng] = location.split(',').map(Number);
+    if (!isNaN(lat) && !isNaN(lng)) {
+        map.setCenter({ lat, lng });
+        map.setZoom(15);
+        setMarker(lat, lng);
+    }
+};
+
+// --- Form Submission ---
+let uploadedImageUrl = '';
+document.getElementById('petPhoto').addEventListener('change', async function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const previewDiv = document.getElementById('photoPreview');
+    previewDiv.innerHTML = '<span class="text-muted">Uploading...</span>';
+    try {
+        const url = await uploadToCloudinary(file);
+        uploadedImageUrl = url;
+        previewDiv.innerHTML = `<img src="${url}" alt="Preview" class="img-fluid rounded" style="max-height:150px;">`;
+    } catch (err) {
+        previewDiv.innerHTML = '<span class="text-danger">Upload failed. Try again.</span>';
+        uploadedImageUrl = '';
+    }
+});
+
+document.getElementById('postForm').onsubmit = async function (e) {
+    e.preventDefault();
+    const name = document.getElementById('petName').value.trim();
+    const type = document.getElementById('petType').value;
+    const status = document.getElementById('petStatus').value;
+    const location = document.getElementById('petLocation').value;
+    const desc = document.getElementById('petDesc').value.trim();
+    if (!name || !type || !status || !location || !desc || !uploadedImageUrl) {
+        alert('Please fill in all fields and upload a photo.');
+        return;
+    }
+    const post = {
+        name, type, status, location, desc, image: uploadedImageUrl, date: new Date().toISOString()
+    };
+    await addPost(post);
+    this.reset();
+    document.getElementById('photoPreview').innerHTML = '';
+    uploadedImageUrl = '';
+    renderPosts();
+    alert('Post added!');
+};
+
+// --- On Load ---
+document.addEventListener('DOMContentLoaded', function () {
+    renderPosts();
+    // ... other UI logic ...
 });
