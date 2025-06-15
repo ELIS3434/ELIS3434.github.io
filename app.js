@@ -1061,16 +1061,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         posts.slice(0, 6).forEach(post => {
             const col = document.createElement('div');
-            col.className = 'col-md-4 mb-4';
+            col.className = 'col-12';
             col.innerHTML = `
-                <div class="card h-100 shadow-sm">
-                    <img src="${post.image}" class="card-img-top" alt="Pet photo">
-                    <div class="card-body">
-                        <h5 class="card-title mb-1">${post.name}</h5>
-                        <div class="mb-1"><span class="badge bg-${post.status === 'lost' ? 'danger' : 'success'}">${post.status.charAt(0).toUpperCase() + post.status.slice(1)}</span> <span class="badge bg-secondary">${post.type}</span></div>
-                        <div class="mb-1"><i class="bi bi-geo-alt"></i> ${post.location}</div>
-                        <div class="small text-muted mb-2">${new Date(post.date).toLocaleDateString()}</div>
-                        <p class="card-text">${post.desc}</p>
+                <div class="social-card">
+                    <img src="${post.image}" class="avatar" alt="Pet photo">
+                    <div class="card-content">
+                        <div class="pet-name">${post.name}</div>
+                        <div class="badges">
+                            <span class="badge bg-${post.status === 'lost' ? 'danger' : 'success'}">${post.status.charAt(0).toUpperCase() + post.status.slice(1)}</span>
+                            <span class="badge bg-secondary">${post.type}</span>
+                        </div>
+                        <div class="pet-location"><i class="bi bi-geo-alt"></i> ${post.location}</div>
+                        <div class="pet-date">${new Date(post.date).toLocaleDateString()}</div>
+                        <div class="pet-desc">${post.desc}</div>
                     </div>
                 </div>
             `;
@@ -1099,16 +1102,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         filtered.slice(0, 6).forEach(post => {
             const col = document.createElement('div');
-            col.className = 'col-md-4 mb-4';
+            col.className = 'col-12';
             col.innerHTML = `
-                <div class="card h-100 shadow-sm">
-                    <img src="${post.image}" class="card-img-top" alt="Pet photo">
-                    <div class="card-body">
-                        <h5 class="card-title mb-1">${post.name}</h5>
-                        <div class="mb-1"><span class="badge bg-${post.status === 'lost' ? 'danger' : 'success'}">${post.status.charAt(0).toUpperCase() + post.status.slice(1)}</span> <span class="badge bg-secondary">${post.type}</span></div>
-                        <div class="mb-1"><i class="bi bi-geo-alt"></i> ${post.location}</div>
-                        <div class="small text-muted mb-2">${new Date(post.date).toLocaleDateString()}</div>
-                        <p class="card-text">${post.desc}</p>
+                <div class="social-card">
+                    <img src="${post.image}" class="avatar" alt="Pet photo">
+                    <div class="card-content">
+                        <div class="pet-name">${post.name}</div>
+                        <div class="badges">
+                            <span class="badge bg-${post.status === 'lost' ? 'danger' : 'success'}">${post.status.charAt(0).toUpperCase() + post.status.slice(1)}</span>
+                            <span class="badge bg-secondary">${post.type}</span>
+                        </div>
+                        <div class="pet-location"><i class="bi bi-geo-alt"></i> ${post.location}</div>
+                        <div class="pet-date">${new Date(post.date).toLocaleDateString()}</div>
+                        <div class="pet-desc">${post.desc}</div>
                     </div>
                 </div>
             `;
