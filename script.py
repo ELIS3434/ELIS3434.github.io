@@ -1,4 +1,16 @@
-<!DOCTYPE html>
+import os
+import zipfile
+from datetime import datetime
+
+# Create directory structure
+os.makedirs("petalert-global", exist_ok=True)
+os.makedirs("petalert-global/css", exist_ok=True)
+os.makedirs("petalert-global/js", exist_ok=True)
+os.makedirs("petalert-global/img", exist_ok=True)
+os.makedirs("petalert-global/ads", exist_ok=True)
+
+# Create index.html
+index_html = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,11 +33,11 @@
                 <i class="fas fa-paw me-2"></i>
                 <span data-i18n="siteName">PetAlert Global</span>
             </a>
-
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -41,7 +53,7 @@
                         <a class="nav-link" href="contact.html" data-i18n="contact">Contact</a>
                     </li>
                 </ul>
-
+                
                 <div class="d-flex align-items-center">
                     <select id="languageSelect" class="form-select form-select-sm me-3" style="width: auto;">
                         <option value="en">English</option>
@@ -216,4 +228,9 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <script src="js/app.js"></script>
 </body>
-</html>
+</html>"""
+
+with open("petalert-global/index.html", "w", encoding="utf-8") as f:
+    f.write(index_html)
+
+print("✅ Created index.html")

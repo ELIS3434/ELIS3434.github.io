@@ -1,0 +1,15 @@
+# Favicon Instructions
+
+Replace this file with an actual favicon.ico file (32x32 pixels).
+
+You can create one at:
+- https://favicon.io/
+- https://www.canva.com/
+- https://realfavicongenerator.net/
+
+Recommended sizes:
+- favicon.ico (32x32)
+- favicon.png (32x32)
+- apple-touch-icon.png (180x180)
+
+Current placeholder: Replace with your PetAlert Global logo

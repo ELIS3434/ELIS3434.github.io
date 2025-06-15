@@ -1,0 +1,20 @@
+# PWA Icon Instructions
+
+Replace these placeholder files with actual PNG icons:
+
+Required sizes:
+- icon-192.png (192x192 pixels) - For Android
+- icon-512.png (512x512 pixels) - For iOS and Android
+
+Design guidelines:
+- Use your PetAlert Global logo
+- Ensure good contrast on different backgrounds
+- Test on various devices
+- Consider maskable icon variants
+
+You can create icons at:
+- https://realfavicongenerator.net/
+- https://www.pwabuilder.com/imageGenerator
+- https://maskable.app/
+
+Current placeholder: Replace with your brand icons

@@ -1,0 +1,210 @@
+# Create offline.html page
+offline_html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - PetAlert Global</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .offline-container {
+            text-align: center;
+            color: white;
+            max-width: 500px;
+            padding: 2rem;
+        }
+        .offline-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        .btn-outline-light:hover {
+            background-color: white;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <i class="fas fa-wifi-slash offline-icon"></i>
+        <h1 class="mb-4">You're Offline</h1>
+        <p class="lead mb-4">
+            It looks like you're not connected to the internet. 
+            Don't worry, you can still browse cached content and we'll sync your data when you're back online.
+        </p>
+        <p class="mb-4">
+            <small>
+                Any forms you submit will be saved and automatically sent when your connection is restored.
+            </small>
+        </p>
+        <button class="btn btn-outline-light btn-lg" onclick="location.reload()">
+            <i class="fas fa-redo me-2"></i>
+            Try Again
+        </button>
+        <div class="mt-4">
+            <a href="/" class="btn btn-link text-white">
+                <i class="fas fa-home me-2"></i>
+                Go to Homepage
+            </a>
+        </div>
+    </div>
+</body>
+</html>"""
+
+with open("petalert-global/offline.html", "w", encoding="utf-8") as f:
+    f.write(offline_html)
+
+# Create ad placeholder files
+banner_ad = """<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90px;
+        }
+        .ad-placeholder {
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .ad-placeholder i {
+            font-size: 24px;
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="ad-placeholder">
+        <i>📢</i>
+        <div>Advertisement Space</div>
+        <small>Replace with AdSense code</small>
+    </div>
+    
+    <!-- Google AdSense placeholder - Replace with actual AdSense code -->
+    <!--
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+            crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    -->
+</body>
+</html>"""
+
+with open("petalert-global/ads/banner.html", "w", encoding="utf-8") as f:
+    f.write(banner_ad)
+
+sidebar_ad = """<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            min-height: 250px;
+        }
+        .ad-placeholder {
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+            padding: 20px;
+        }
+        .ad-placeholder i {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .pet-related-ad {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .pet-related-ad:hover {
+            transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
+        .pet-related-ad h6 {
+            margin: 0 0 5px 0;
+            font-size: 14px;
+        }
+        .pet-related-ad small {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="ad-placeholder">
+        <i>🎯</i>
+        <div><strong>Sidebar Advertisement</strong></div>
+        <small>300x250 - Replace with AdSense</small>
+    </div>
+    
+    <!-- Sample pet-related ads -->
+    <a href="#" class="pet-related-ad">
+        <h6>🐕 Premium Pet Food</h6>
+        <small>Nutritious meals for your furry friends</small>
+    </a>
+    
+    <a href="#" class="pet-related-ad">
+        <h6>📍 GPS Pet Tracker</h6>
+        <small>Never lose your pet again</small>
+    </a>
+    
+    <!-- Google AdSense placeholder - Replace with actual AdSense code -->
+    <!--
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+            crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="rectangle"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    -->
+</body>
+</html>"""
+
+with open("petalert-global/ads/sidebar.html", "w", encoding="utf-8") as f:
+    f.write(sidebar_ad)
+
+print("✅ Created offline.html and ad placeholder files")

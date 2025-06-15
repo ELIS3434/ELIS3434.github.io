@@ -1,0 +1,20 @@
+# Logo Instructions
+
+Replace this file with your PetAlert Global logo.
+
+Recommended formats:
+- logo.png (transparent background)
+- logo.svg (vector format, scalable)
+
+Specifications:
+- Width: 200-300px for PNG
+- Height: 60-80px for PNG
+- Transparent background
+- High resolution (2x for retina displays)
+
+Design tips:
+- Include paw print or pet silhouette
+- Use readable typography
+- Ensure it works on dark and light backgrounds
+
+Current placeholder: Replace with your actual logo

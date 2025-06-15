@@ -1,0 +1,295 @@
+# Create contact.html
+contact_html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - PetAlert Global</title>
+    <meta name="description" content="Get in touch with PetAlert Global team for support, questions, or partnership opportunities.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-paw me-2"></i>
+                <span data-i18n="siteName">PetAlert Global</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" data-i18n="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="announcements.html" data-i18n="announcements">Announcements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add.html" data-i18n="addPost">Add Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html" data-i18n="contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <select id="languageSelect" class="form-select form-select-sm me-3" style="width: auto;">
+                        <option value="en">English</option>
+                        <option value="pl">Polski</option>
+                        <option value="es">Español</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header py-4 bg-primary text-white">
+        <div class="container">
+            <h1 class="mb-0" data-i18n="contactUs">Contact Us</h1>
+            <p class="mb-0 opacity-75" data-i18n="getInTouch">Get in touch with our team</p>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <i class="fas fa-envelope fa-3x text-primary mb-3"></i>
+                            <h5 data-i18n="emailSupport">Email Support</h5>
+                            <p class="text-muted" data-i18n="emailSupportDesc">Get help with your account or report issues</p>
+                            <a href="mailto:support@petalert.global" class="btn btn-outline-primary">support@petalert.global</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <i class="fas fa-phone fa-3x text-success mb-3"></i>
+                            <h5 data-i18n="phoneSupport">Phone Support</h5>
+                            <p class="text-muted" data-i18n="phoneSupportDesc">24/7 emergency support for lost pets</p>
+                            <a href="tel:+1-800-PET-ALERT" class="btn btn-outline-success">+1-800-PET-ALERT</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <i class="fas fa-comments fa-3x text-info mb-3"></i>
+                            <h5 data-i18n="liveChat">Live Chat</h5>
+                            <p class="text-muted" data-i18n="liveChatDesc">Chat with our support team in real-time</p>
+                            <button class="btn btn-outline-info" id="liveChatBtn" data-i18n="startChat">Start Chat</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0" data-i18n="sendMessage">Send us a Message</h4>
+                        </div>
+                        <div class="card-body p-5">
+                            <form id="contactForm" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label" data-i18n="firstName">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                        <div class="invalid-feedback" data-i18n="firstNameRequired">First name is required</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label" data-i18n="lastName">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                        <div class="invalid-feedback" data-i18n="lastNameRequired">Last name is required</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label" data-i18n="emailAddress">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <div class="invalid-feedback" data-i18n="emailRequired">Valid email is required</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label" data-i18n="phoneNumber">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label" data-i18n="subject">Subject *</label>
+                                    <select class="form-select" id="subject" name="subject" required>
+                                        <option value="" data-i18n="selectSubject">Select a subject...</option>
+                                        <option value="general" data-i18n="generalInquiry">General Inquiry</option>
+                                        <option value="support" data-i18n="technicalSupport">Technical Support</option>
+                                        <option value="partnership" data-i18n="partnership">Partnership</option>
+                                        <option value="feedback" data-i18n="feedback">Feedback</option>
+                                        <option value="report" data-i18n="reportIssue">Report Issue</option>
+                                    </select>
+                                    <div class="invalid-feedback" data-i18n="subjectRequired">Subject is required</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="message" class="form-label" data-i18n="message">Message *</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Please describe your inquiry or issue in detail..."></textarea>
+                                    <div class="invalid-feedback" data-i18n="messageRequired">Message is required</div>
+                                </div>
+
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter" data-i18n="subscribeNewsletter">
+                                        Subscribe to our newsletter for pet safety tips and updates
+                                    </label>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>
+                                        <span data-i18n="sendMessage">Send Message</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" data-i18n="faq">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                    <span data-i18n="faq1Question">How do I report a lost pet?</span>
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-i18n="faq1Answer">
+                                    Click on "Add Post" in the navigation menu, select "Lost Pet", fill out the form with your pet's details and upload a clear photo. Our system will automatically notify users in your area.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                    <span data-i18n="faq2Question">Is PetAlert Global free to use?</span>
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-i18n="faq2Answer">
+                                    Yes, all basic features of PetAlert Global are completely free. This includes posting lost/found pet reports, searching the database, and receiving notifications.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                    <span data-i18n="faq3Question">How do I search for found pets?</span>
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-i18n="faq3Answer">
+                                    Visit the "Announcements" page where you can filter by location, pet type, and date. You can also view recent reports on the interactive map on our homepage.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                    <span data-i18n="faq4Question">What should I do if I find a lost pet?</span>
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-i18n="faq4Answer">
+                                    First, ensure the pet is safe and check for ID tags or microchips. Then post a "Found Pet" report on our platform with the pet's photo and location details. Also contact local shelters and veterinarians.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                    <span data-i18n="faq5Question">How do I delete or update my post?</span>
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-i18n="faq5Answer">
+                                    After posting, you'll receive an email with a unique link to manage your post. You can use this link to update information or mark your pet as found/reunited.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 data-i18n="siteName">PetAlert Global</h5>
+                    <p class="text-muted" data-i18n="footerDescription">Connecting pet owners worldwide to reunite with their beloved companions.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 data-i18n="quickLinks">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="announcements.html" class="text-muted" data-i18n="announcements">Announcements</a></li>
+                        <li><a href="add.html" class="text-muted" data-i18n="addPost">Add Post</a></li>
+                        <li><a href="contact.html" class="text-muted" data-i18n="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 data-i18n="followUs">Follow Us</h6>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-instagram fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 PetAlert Global. <span data-i18n="allRightsReserved">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>"""
+
+with open("petalert-global/contact.html", "w", encoding="utf-8") as f:
+    f.write(contact_html)
+
+print("✅ Created contact.html")

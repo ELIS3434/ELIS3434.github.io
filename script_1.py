@@ -1,0 +1,242 @@
+# Create announcements.html
+announcements_html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements - PetAlert Global</title>
+    <meta name="description" content="Browse all lost and found pet announcements from around the world.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-paw me-2"></i>
+                <span data-i18n="siteName">PetAlert Global</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" data-i18n="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="announcements.html" data-i18n="announcements">Announcements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add.html" data-i18n="addPost">Add Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html" data-i18n="contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <select id="languageSelect" class="form-select form-select-sm me-3" style="width: auto;">
+                        <option value="en">English</option>
+                        <option value="pl">Polski</option>
+                        <option value="es">Español</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header py-4 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="mb-0" data-i18n="allAnnouncements">All Announcements</h1>
+                    <p class="mb-0 opacity-75" data-i18n="browseAllPosts">Browse all lost and found pet reports</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="add.html" class="btn btn-warning" data-i18n="addNew">Add New Post</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filters -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <input type="text" class="form-control" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Search by pet name, breed, location...">
+                        <button class="btn btn-primary" type="button" id="searchBtn" data-i18n="search">Search</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" id="sortSelect">
+                        <option value="newest" data-i18n="newest">Newest First</option>
+                        <option value="oldest" data-i18n="oldest">Oldest First</option>
+                        <option value="location" data-i18n="byLocation">By Location</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Filters Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0" data-i18n="filterResults">Filter Results</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold" data-i18n="status">Status:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="lost" id="lostCheck" checked>
+                                    <label class="form-check-label" for="lostCheck" data-i18n="lost">Lost</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="found" id="foundCheck" checked>
+                                    <label class="form-check-label" for="foundCheck" data-i18n="found">Found</label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label fw-bold" data-i18n="petType">Pet Type:</label>
+                                <select class="form-select" id="petTypeFilter">
+                                    <option value="all" data-i18n="all">All Types</option>
+                                    <option value="dog" data-i18n="dog">Dog</option>
+                                    <option value="cat" data-i18n="cat">Cat</option>
+                                    <option value="bird" data-i18n="bird">Bird</option>
+                                    <option value="rabbit" data-i18n="rabbit">Rabbit</option>
+                                    <option value="other" data-i18n="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label fw-bold" data-i18n="country">Country:</label>
+                                <select class="form-select" id="countryFilter">
+                                    <option value="all" data-i18n="allCountries">All Countries</option>
+                                    <option value="US">United States</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="ES">Spain</option>
+                                    <option value="PL">Poland</option>
+                                    <option value="IT">Italy</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label fw-bold" data-i18n="dateRange">Date Range:</label>
+                                <select class="form-select" id="dateFilter">
+                                    <option value="all" data-i18n="anytime">Anytime</option>
+                                    <option value="today" data-i18n="today">Today</option>
+                                    <option value="week" data-i18n="thisWeek">This Week</option>
+                                    <option value="month" data-i18n="thisMonth">This Month</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn-primary w-100" id="applyFilters" data-i18n="applyFilters">Apply Filters</button>
+                            <button class="btn btn-outline-secondary w-100 mt-2" id="clearFilters" data-i18n="clearFilters">Clear Filters</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Ad Space -->
+                    <div class="mt-4 text-center">
+                        <div id="sidebar-ad" class="p-3 bg-light rounded">
+                            <small class="text-muted" data-i18n="adSpace">Advertisement space</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Posts Grid -->
+                <div class="col-lg-9">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 id="resultsCount">Showing 24 results</h4>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-primary active" id="gridView">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" id="listView">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="row" id="postsContainer">
+                        <!-- Posts will be loaded dynamically -->
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" data-i18n="previous">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" data-i18n="next">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 data-i18n="siteName">PetAlert Global</h5>
+                    <p class="text-muted" data-i18n="footerDescription">Connecting pet owners worldwide to reunite with their beloved companions.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 data-i18n="quickLinks">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="announcements.html" class="text-muted" data-i18n="announcements">Announcements</a></li>
+                        <li><a href="add.html" class="text-muted" data-i18n="addPost">Add Post</a></li>
+                        <li><a href="contact.html" class="text-muted" data-i18n="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 data-i18n="followUs">Follow Us</h6>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-instagram fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 PetAlert Global. <span data-i18n="allRightsReserved">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>"""
+
+with open("petalert-global/announcements.html", "w", encoding="utf-8") as f:
+    f.write(announcements_html)
+
+print("✅ Created announcements.html")
