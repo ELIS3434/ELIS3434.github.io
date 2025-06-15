@@ -3,224 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetAlert Global - Find Your Lost Pet</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>PetFinder24.live - Find Your Lost Pet</title>
+    <meta name="description" content="Global platform for finding lost pets. Report, search, and reunite with your pet.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="img/logo.png" alt="PetFinder24.live Logo" style="height: 40px; margin-right: 10px;">
+                PetFinder24.live
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#addPost">Add Post</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#search">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stories">Stories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown">EN</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="setLang('en')">English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="setLang('pl')">Polski</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section text-center py-5">
         <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold text-white mb-4">
-                        Find Your Lost Pet <span class="text-warning">Faster</span>
-                    </h1>
-                    <p class="lead text-white-50 mb-4">
-                        Global database connecting pet owners worldwide. Advanced search, real-time alerts, and community support.
-                    </p>
-                    <div class="d-flex gap-3 mb-4">
-                        <button class="btn btn-warning btn-lg px-4" onclick="showReportModal()">
-                            <i class="fas fa-plus me-2"></i>Report Lost Pet
-                        </button>
-                        <button class="btn btn-outline-light btn-lg px-4" onclick="scrollToSearch()">
-                            <i class="fas fa-search me-2"></i>Search Pets
-                        </button>
-                    </div>
-                    <div class="stats-row">
-                        <div class="stat-item">
-                            <span class="stat-number">12,847</span>
-                            <span class="stat-label">Pets Found</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">89%</span>
-                            <span class="stat-label">Success Rate</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">Support</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image">
-                        <img src="img/hero-pets.jpg" alt="Happy pets" class="img-fluid rounded-4 shadow-lg">
-                    </div>
-                </div>
-            </div>
+            <h1 class="display-4 fw-bold mb-3">Find Your Lost Pet Faster</h1>
+            <p class="lead mb-4">Global database connecting pet owners worldwide. Advanced search, real-time alerts, and community support.</p>
+            <a href="#addPost" class="btn btn-warning btn-lg me-2">Report Lost Pet</a>
+            <a href="#search" class="btn btn-outline-light btn-lg">Search Pets</a>
         </div>
     </section>
 
-    <!-- Advanced Search & Filter Section -->
-    <section class="search-section py-5" id="search-section">
+    <!-- Search & Map Section -->
+    <section id="search" class="py-5 bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="search-card">
-                        <h3 class="text-center mb-4">Advanced Pet Search</h3>
-                        
-                        <!-- Quick Filters -->
-                        <div class="quick-filters mb-4">
-                            <button class="filter-btn active" data-filter="all">All Pets</button>
-                            <button class="filter-btn" data-filter="lost">Lost</button>
-                            <button class="filter-btn" data-filter="found">Found</button>
-                            <button class="filter-btn" data-filter="dog">Dogs</button>
-                            <button class="filter-btn" data-filter="cat">Cats</button>
-                        </div>
-
-                        <!-- Advanced Filters -->
-                        <div class="row g-3">
-                            <div class="col-md-3">
-                                <select class="form-select" id="petType">
-                                    <option value="">Pet Type</option>
-                                    <option value="dog">Dog</option>
-                                    <option value="cat">Cat</option>
-                                    <option value="bird">Bird</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <select class="form-select" id="petSize">
-                                    <option value="">Size</option>
-                                    <option value="small">Small</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="large">Large</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" id="location" placeholder="Location (City, State)">
-                            </div>
-                            <div class="col-md-3">
-                                <input type="date" class="form-control" id="dateRange">
-                            </div>
-                        </div>
-
-                        <!-- Search Input -->
-                        <div class="search-input-group mt-3">
-                            <input type="text" class="form-control" id="searchInput" placeholder="Search by name, breed, description...">
-                            <button class="btn btn-primary" onclick="performSearch()">
-                                <i class="fas fa-search"></i> Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Map Section -->
-    <section class="map-section py-5">
-        <div class="container">
-            <h3 class="text-center mb-4">Interactive Pet Map</h3>
-            <div class="map-container">
-                <div id="map" style="height: 500px;"></div>
-                <div class="map-legend">
-                    <div class="legend-item">
-                        <span class="legend-marker lost"></span>
-                        <span>Lost Pets</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-marker found"></span>
-                        <span>Found Pets</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-marker reunited"></span>
-                        <span>Reunited</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Posts Grid Section -->
-    <section class="posts-section py-5">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3>Recent Posts</h3>
-                <div class="view-toggle">
-                    <button class="btn btn-outline-secondary" onclick="toggleView('grid')" id="gridView">
-                        <i class="fas fa-th"></i>
-                    </button>
-                    <button class="btn btn-outline-secondary active" onclick="toggleView('list')" id="listView">
-                        <i class="fas fa-list"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Posts Container -->
-            <div id="postsContainer" class="posts-grid">
-                <!-- Posts will be dynamically loaded here -->
-            </div>
-
-            <!-- Load More Button -->
-            <div class="text-center mt-4">
-                <button class="btn btn-outline-primary" onclick="loadMorePosts()">
-                    Load More Posts
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Success Stories Section -->
-    <section class="success-stories py-5 bg-light">
-        <div class="container">
-            <h3 class="text-center mb-5">Success Stories</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="story-card">
-                        <img src="img/success1.jpg" alt="Reunited pet" class="story-image">
-                        <div class="story-content">
-                            <h5>Max Found After 3 Days</h5>
-                            <p>"Thanks to PetAlert's community, Max was found safe and sound!"</p>
-                            <small class="text-muted">- Sarah Johnson, Berlin</small>
-                        </div>
-                    </div>
-                </div>
-                <!-- More success stories... -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Report Modal -->
-    <div class="modal fade" id="reportModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Report Lost Pet</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="reportForm">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Pet Name</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Pet Type</label>
-                                <select class="form-select" required>
-                                    <option value="">Select...</option>
-                                    <option value="dog">Dog</option>
-                                    <option value="cat">Cat</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <!-- More form fields... -->
-                        </div>
+            <div class="row mb-4">
+                <div class="col-md-8 mx-auto">
+                    <form id="searchForm" class="d-flex flex-wrap gap-2 justify-content-center">
+                        <input type="text" class="form-control w-auto" placeholder="Pet name, breed, city..." id="searchInput">
+                        <select class="form-select w-auto" id="typeFilter">
+                            <option value="">All Types</option>
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                            <option value="bird">Bird</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <select class="form-select w-auto" id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="lost">Lost</option>
+                            <option value="found">Found</option>
+                        </select>
+                        <button class="btn btn-primary" type="submit">Search</button>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Submit Report</button>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="map" style="height: 400px; border-radius: 1rem;"></div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add Post Section -->
+    <section id="addPost" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">Report Lost/Found Pet</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="postForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Pet Name</label>
+                                    <input type="text" class="form-control" id="petName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Pet Type</label>
+                                    <select class="form-select" id="petType" required>
+                                        <option value="">Select...</option>
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="bird">Bird</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-select" id="petStatus" required>
+                                        <option value="lost">Lost</option>
+                                        <option value="found">Found</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Photo</label>
+                                    <input type="file" class="form-control" id="petPhoto" accept="image/*" required>
+                                    <div id="photoPreview" class="mt-2"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" class="form-control mb-2" id="petLocation" placeholder="Click on the map or use geolocation" required readonly>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="useLocation">Use My Location</button>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" id="petDesc" rows="2" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">Submit Report</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Recent Posts</h2>
+            <div class="row" id="recentPosts">
+                <!-- Posts will be rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section id="stories" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Success Stories</h2>
+            <div class="row" id="successStories">
+                <!-- Stories will be rendered here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-1">&copy; 2025 PetFinder24.live. All rights reserved.</p>
+            <div class="small">Contact: <a href="mailto:support@petfinder24.live" class="text-warning">support@petfinder24.live</a></div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="js/app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
