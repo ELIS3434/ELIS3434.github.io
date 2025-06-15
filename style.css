@@ -512,87 +512,100 @@ footer a:hover {
 
 /* Animation Classes */
 .fade-in {
-    animation: fadeIn 0.5s ease-in;
+    animation: fadeIn 0.8s ease;
 }
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: none; }
 }
-
 .slide-in-left {
-    animation: slideInLeft 0.5s ease-out;
+    animation: slideInLeft 0.7s cubic-bezier(0.4,0,0.2,1);
 }
-
 @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: none; }
 }
-
 .slide-in-right {
-    animation: slideInRight 0.5s ease-out;
+    animation: slideInRight 0.7s cubic-bezier(0.4,0,0.2,1);
 }
-
 @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: none; }
 }
 
-/* Print Styles */
-@media print {
-    .navbar, .ad-banner, #sidebar-ad, footer {
-        display: none !important;
-    }
-
-    .container {
-        max-width: none !important;
-    }
-
-    .card {
-        box-shadow: none;
-        border: 1px solid var(--warm-gray-300);
-    }
+.btn, .form-control, .form-select {
+    transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+}
+.btn:hover, .btn:focus {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 18px -4px rgba(79,70,229,0.13);
+}
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 4px #a5b4fc;
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary-color: #6366f1;
-        --secondary-color: #818cf8;
-        --warm-gray-100: #1c1917;
-        --warm-gray-200: #292524;
-        --warm-gray-300: #44403c;
-        --warm-gray-400: #57534e;
-        --warm-gray-500: #78716c;
-        --warm-gray-600: #a8a29e;
-        --warm-gray-700: #d6d3d1;
-        --warm-gray-800: #e7e5e4;
-        --warm-gray-900: #f5f3f1;
-    }
+/* Icon styles for pet type */
+.pet-type-icon {
+    font-size: 1.2em;
+    margin-right: 0.3em;
+    vertical-align: -0.1em;
+}
 
-    body {
-        background: var(--warm-gray-100);
-        color: var(--warm-gray-800);
-    }
+/* Copy/Show on Map buttons */
+.social-card .action-btn {
+    background: #f3f4f6;
+    border: none;
+    border-radius: 0.5em;
+    color: #6366f1;
+    margin-right: 0.5em;
+    padding: 0.3em 0.7em;
+    font-size: 1em;
+    transition: background 0.2s, color 0.2s;
+}
+.social-card .action-btn:hover {
+    background: #6366f1;
+    color: #fff;
+}
 
-    .card {
-        background: var(--warm-gray-200);
-        border-color: var(--warm-gray-300);
-    }
-
-    .form-control, .form-select {
-        background-color: var(--warm-gray-200);
-        border-color: var(--warm-gray-300);
-        color: var(--warm-gray-800);
-    }
-
-    .form-control:focus, .form-select:focus {
-        background-color: var(--warm-gray-300);
-    }
-
-    .bg-light {
-        background-color: var(--warm-gray-200) !important;
-    }
+/* Dark mode */
+body.dark-mode, html.dark-mode {
+    background: linear-gradient(135deg, #232526 0%, #1e293b 100%);
+    color: #e0e7ff;
+}
+body.dark-mode .navbar, html.dark-mode .navbar {
+    background: linear-gradient(90deg, #232526 0%, #1e293b 100%) !important;
+}
+body.dark-mode .hero-section {
+    background: linear-gradient(120deg, #232526 0%, #1e293b 100%);
+    color: #fff;
+}
+body.dark-mode .card, body.dark-mode .social-card {
+    background: #232526;
+    color: #e0e7ff;
+    border-color: #444;
+}
+body.dark-mode .form-control, body.dark-mode .form-select {
+    background: #232526;
+    color: #e0e7ff;
+    border-color: #444;
+}
+body.dark-mode .form-control:focus, body.dark-mode .form-select:focus {
+    background: #232526;
+    color: #fff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px #6366f1;
+}
+body.dark-mode .btn-outline-light {
+    border-color: #6366f1;
+    color: #fff;
+}
+body.dark-mode .btn-outline-light:hover {
+    background: #6366f1;
+    color: #fff;
+}
+body.dark-mode footer {
+    background: #18181b;
+    color: #e0e7ff;
 }
 
 /* Animations */
