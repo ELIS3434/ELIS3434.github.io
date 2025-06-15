@@ -243,7 +243,7 @@ self.addEventListener('periodicsync', (event) => {
 
 async function syncPetAlerts() {
     try {
-        // Fetch latest pet alerts from server
+        // Fetch latest pet alerts from server (upgrade point: replace with your backend API)
         const response = await fetch('/api/pets/latest');
         if (response.ok) {
             const alerts = await response.json();
@@ -253,8 +253,17 @@ async function syncPetAlerts() {
             await cache.put('/api/pets/latest', new Response(JSON.stringify(alerts)));
 
             console.log('[ServiceWorker] Pet alerts synced');
+        } else {
+            throw new Error('API not available');
         }
     } catch (error) {
-        console.error('[ServiceWorker] Failed to sync pet alerts:', error);
+        // Fallback: store demo/mock data
+        const demoAlerts = [
+            { lat: 52.52, lng: 13.405, type: 'lost', name: 'Max - German Shepherd', city: 'Berlin, DE' },
+            { lat: 51.5074, lng: -0.1278, type: 'found', name: 'Luna - Tabby Cat', city: 'London, UK' }
+        ];
+        const cache = await caches.open(CACHE_NAME);
+        await cache.put('/api/pets/latest', new Response(JSON.stringify(demoAlerts)));
+        console.warn('[ServiceWorker] Using demo data for pet alerts');
     }
 }

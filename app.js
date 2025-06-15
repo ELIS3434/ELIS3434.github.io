@@ -365,6 +365,7 @@ class PetAlertApp {
         if (!mapElement) return;
 
         try {
+            // Default: OpenStreetMap (no API key required)
             this.map = L.map('map', {
                 preferCanvas: true,
                 zoomControl: true
@@ -374,6 +375,11 @@ class PetAlertApp {
                 attribution: '© OpenStreetMap contributors',
                 maxZoom: 18
             }).addTo(this.map);
+
+            // --- Mapbox/Google Maps upgrade point ---
+            // To use Mapbox, replace the tileLayer URL and add your API key:
+            // L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=YOUR_MAPBOX_KEY', { ... })
+            // To use Google Maps, use a plugin and your API key.
 
             // Initialize marker cluster group
             if (window.L && L.markerClusterGroup) {
@@ -687,7 +693,7 @@ class PetAlertApp {
     }
 
     reverseGeocode(lat, lng) {
-        // Simplified reverse geocoding - in production, use a proper service
+        // Default: Nominatim (OpenStreetMap) - public endpoint, no API key
         fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
             .then(response => response.json())
             .then(data => {
@@ -699,6 +705,7 @@ class PetAlertApp {
                 }
             })
             .catch(error => {
+                // Fallback: leave city blank, log error
                 console.error('Reverse geocoding error:', error);
             });
     }
@@ -857,6 +864,18 @@ class PetAlertApp {
                     console.error('Service Worker registration failed:', error);
                 });
         }
+    }
+
+    // API call example with fallback to demo data
+    fetchPetsFromAPI(filters = {}) {
+        // Placeholder for real API endpoint
+        const apiUrl = 'https://api.petalert.global/pets'; // Replace with your backend
+        return fetch(apiUrl)
+            .then(res => res.ok ? res.json() : Promise.reject('API error'))
+            .catch(() => {
+                // Fallback: return demo/mock data
+                return this.loadDemoData();
+            });
     }
 }
 

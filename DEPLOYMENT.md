@@ -12,8 +12,8 @@
 - [ ] Add `img/og-image.png` for social media sharing (1200x630)
 
 #### 2. Configuration
-- [ ] Update `sitemap.xml` with your actual domain
-- [ ] Update `robots.txt` with your actual domain
+- [ ] Update `sitemap.xml` with your actual domain (https://petfinder24.live)
+- [ ] Update `robots.txt` with your actual domain (https://petfinder24.live)
 - [ ] Configure `manifest.json` with your app details
 - [ ] Update all instances of "yourdomain.com" in files
 

@@ -179,7 +179,7 @@ const translations = {
 Create `.env` file for production:
 ```env
 # API Configuration
-API_BASE_URL=https://api.petalert.global
+API_BASE_URL=https://api.petfinder24.live
 GOOGLE_MAPS_API_KEY=your_api_key_here
 GOOGLE_ANALYTICS_ID=GA_MEASUREMENT_ID
 

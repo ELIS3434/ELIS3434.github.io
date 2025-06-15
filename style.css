@@ -25,11 +25,15 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: var(--gray-700);
-    background-color: #ffffff;
+body, html {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: #f7f9fb;
+    color: #222;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .display-3, .display-4 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    letter-spacing: -1px;
 }
 
 /* Enhanced Typography */
@@ -71,9 +75,8 @@ h6 { font-size: 1rem; }
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff;
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -102,16 +105,16 @@ h6 { font-size: 1rem; }
 }
 
 /* Cards and Components */
-.card {
-    border: none;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
+.card, .stat-item {
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(30,60,114,0.07);
+    background: #fff;
+    transition: box-shadow 0.3s, transform 0.2s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.card:hover, .stat-item:hover {
+    box-shadow: 0 6px 24px rgba(30,60,114,0.13);
+    transform: translateY(-4px) scale(1.02);
 }
 
 .card-header {
@@ -156,14 +159,32 @@ h6 { font-size: 1rem; }
 }
 
 .btn-warning {
-    background: linear-gradient(135deg, var(--warning-color) 0%, #fbbf24 100%);
-    color: white;
+    background: linear-gradient(90deg, #ffc107 0%, #ff9800 100%);
+    border: none;
+    color: #222;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(255,193,7,0.15);
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+.btn-warning:hover, .btn-warning:focus {
+    background: linear-gradient(90deg, #ff9800 0%, #ffc107 100%);
+    color: #fff;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 16px rgba(255,193,7,0.25);
 }
 
-.btn-warning:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.5);
-    color: white;
+.btn-outline-light {
+    border: 2px solid #fff;
+    color: #fff;
+    font-weight: 600;
+    background: transparent;
+    transition: background 0.3s, color 0.3s, border 0.3s, transform 0.2s;
+}
+.btn-outline-light:hover, .btn-outline-light:focus {
+    background: #fff;
+    color: #1e3c72;
+    border-color: #ffc107;
+    transform: translateY(-2px) scale(1.03);
 }
 
 /* Form Enhancements */
@@ -287,10 +308,6 @@ h6 { font-size: 1rem; }
     transition: var(--transition);
 }
 
-.stat-item:hover {
-    transform: translateY(-3px);
-}
-
 .stat-item h3 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -315,24 +332,26 @@ h6 { font-size: 1rem; }
 
 /* Footer */
 footer {
-    background: linear-gradient(135deg, var(--gray-800) 0%, var(--gray-900) 100%);
+    background: linear-gradient(135deg, #232526 0%, #1e3c72 100%);
+    color: #fff;
 }
 
 footer a {
+    color: #ffc107;
     text-decoration: none;
-    transition: var(--transition);
+    transition: color 0.2s, transform 0.2s;
 }
-
 footer a:hover {
-    color: var(--primary-color) !important;
+    color: #fff !important;
     transform: translateX(5px);
 }
 
 .social-links a {
-    transition: var(--transition);
+    color: #ffc107;
+    transition: color 0.2s, transform 0.2s;
 }
-
 .social-links a:hover {
+    color: #fff;
     transform: translateY(-3px);
 }
 
@@ -515,4 +534,17 @@ footer a:hover {
     .bg-light {
         background-color: var(--gray-800) !important;
     }
+}
+
+/* Animations */
+.hero-section .display-3, .hero-section .lead, .hero-section .btn {
+    animation: fadeInUp 1s cubic-bezier(.39,.575,.565,1) both;
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%) !important;
 }
