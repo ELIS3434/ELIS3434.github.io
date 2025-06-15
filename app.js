@@ -1199,13 +1199,13 @@ window.showOnMap = function(location) {
 // --- Firebase Config ---
 // TODO: Replace with your actual Firebase config
 const firebaseConfig = {
-  apiKey: "<YOUR_API_KEY>",
-  authDomain: "<YOUR_AUTH_DOMAIN>",
+  apiKey: "AIzaSyAD15kGuroFJjTVHf8Mzta6wScutnVkXaU",
+  authDomain: "petfinder24-947d4.firebaseapp.com",
   projectId: "petfinder24-947d4",
-  storageBucket: "<YOUR_STORAGE_BUCKET>",
-  messagingSenderId: "<YOUR_MESSAGING_SENDER_ID>",
-  appId: "<YOUR_APP_ID>",
-  measurementId: "<YOUR_MEASUREMENT_ID>"
+  storageBucket: "petfinder24-947d4.appspot.com",
+  messagingSenderId: "742115560500",
+  appId: "1:742115560500:web:ed53e23a5defa93f76ce61",
+  measurementId: "G-DQH2KEXBF7"
 };
 
 firebase.initializeApp(firebaseConfig);
